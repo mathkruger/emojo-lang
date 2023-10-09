@@ -1,4 +1,8 @@
-# emojo-lang
+# Emojo lang
+
+Make your code more fun, code with Emojo!
+
+![Emojo screenshot](screenshot.png)
 
 To install dependencies:
 
