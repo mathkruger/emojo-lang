@@ -69,19 +69,7 @@ export function parseCode(code: string, target: SupportedTargets) {
   return  code.split("\n").map(x => x.trim()).filter(x => x.length > 0).map(x => {
     return [...x].map(x => {
       const tokenFound = parseTables[target].find(y => y.key === x);
-      return tokenWithSpaces(target, tokenFound?.value) || x;
+      return tokenFound?.value || x;
     }).join("");
   }).join("\n");
-}
-
-function tokenWithSpaces(target: SupportedTargets, token?: string) {
-  if (!token) {
-    return token;
-  }
-
-  if (target === SupportedTargets.JS) {
-    return token;
-  }
-
-  return ` ${token} `;
 }
