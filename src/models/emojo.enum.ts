@@ -20,4 +20,11 @@ export enum Emojo {
   VAR = "🟠",
   LET = "🟢",
   DOT = "🔹",
+  FUNCTION = "🤓",
+  SWITCH = "🧐",
+  CASE = "😉",
+  BREAK = "💀",
+  DEFAULT = "😶",
+  FOR = "🔄",
+  CONTINUE = "🫡",
 };

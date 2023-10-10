@@ -24,6 +24,14 @@ const parseTables: Record<SupportedTargets, KeyValue[]> = {
     { key: Emojo.CONST, value: "const" },
     { key: Emojo.VAR, value: "var" },
     { key: Emojo.LET, value: "let" },
+    { key: Emojo.DOT, value: "." },
+    { key: Emojo.FUNCTION, value: "function" },
+    { key: Emojo.SWITCH, value: "switch" },
+    { key: Emojo.CASE, value: "case" },
+    { key: Emojo.BREAK, value: "break" },
+    { key: Emojo.DEFAULT, value: "default" },
+    { key: Emojo.FOR, value: "for" },
+    { key: Emojo.CONTINUE, value: "continue" },
   ],
   "kl": <KeyValue[]>[
     { key: Emojo.LOG, value: "VAIDJ" },
@@ -46,6 +54,14 @@ const parseTables: Record<SupportedTargets, KeyValue[]> = {
     { key: Emojo.CONST, value: "KASINAO" },
     { key: Emojo.VAR, value: "KASINAE" },
     { key: Emojo.LET, value: "KASINO" },
+    { key: Emojo.DOT, value: "->" },
+    { key: Emojo.FUNCTION, value: "SABADAÇO" },
+    { key: Emojo.SWITCH, value: "CAN'T" },
+    { key: Emojo.CASE, value: "GET" },
+    { key: Emojo.BREAK, value: "OVER" },
+    { key: Emojo.DEFAULT, value: "BABY" },
+    { key: Emojo.FOR, value: "AS BALADAS" },
+    { key: Emojo.CONTINUE, value: "VAI" },
   ]
 }
 
@@ -62,7 +78,7 @@ function tokenWithSpaces(target: SupportedTargets, token?: string) {
   if (!token) {
     return token;
   }
-  
+
   if (target === SupportedTargets.JS) {
     return token;
   }
