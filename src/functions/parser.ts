@@ -26,26 +26,26 @@ const parseTables: Record<SupportedTargets, KeyValue[]> = {
     { key: Emojo.LET, value: "let" },
   ],
   "kl": <KeyValue[]>[
-    { key: Emojo.LOG, value: "VAIDJ " },
-    { key: Emojo.IF, value: "DESTAQUE " },
-    { key: Emojo.ELSE, value: "INTERNACIONAL " },
-    { key: Emojo.EQUALS, value: "É " },
-    { key: Emojo.PLUS, value: "SOMAE " },
-    { key: Emojo.MINUS, value: "MENOSAE " },
-    { key: Emojo.TIMES, value: "MULTIPLICAE " },
-    { key: Emojo.DIVISION, value: "DIVIDEAE " },
-    { key: Emojo.BIGGER_THAN, value: "MAIOR " },
-    { key: Emojo.LESS_THAN, value: "MENOR " },
-    { key: Emojo.OPEN_CURLY, value: " BOA NOITE " },
-    { key: Emojo.CLOSE_CURLY, value: " BOA TARDE " },
-    { key: Emojo.RETURN, value: "ARREBENTA " },
-    { key: Emojo.OPEN_PARENTHESIS, value: " ABRE " },
-    { key: Emojo.CLOSE_PARENTHESIS, value: " FECHA " },
+    { key: Emojo.LOG, value: "VAIDJ" },
+    { key: Emojo.IF, value: "DESTAQUE" },
+    { key: Emojo.ELSE, value: "INTERNACIONAL" },
+    { key: Emojo.EQUALS, value: "É" },
+    { key: Emojo.PLUS, value: "SOMAE" },
+    { key: Emojo.MINUS, value: "MENOSAE" },
+    { key: Emojo.TIMES, value: "MULTIPLICAE" },
+    { key: Emojo.DIVISION, value: "DIVIDEAE" },
+    { key: Emojo.BIGGER_THAN, value: "MAIOR" },
+    { key: Emojo.LESS_THAN, value: "MENOR" },
+    { key: Emojo.OPEN_CURLY, value: "BOA NOITE" },
+    { key: Emojo.CLOSE_CURLY, value: "BOA TARDE" },
+    { key: Emojo.RETURN, value: "ARREBENTA" },
+    { key: Emojo.OPEN_PARENTHESIS, value: "ABRE" },
+    { key: Emojo.CLOSE_PARENTHESIS, value: "FECHA" },
     { key: Emojo.QUOTES, value: "\"" },
     { key: Emojo.SEMI, value: ";" },
-    { key: Emojo.CONST, value: "KASINAO " },
-    { key: Emojo.VAR, value: "KASINAE " },
-    { key: Emojo.LET, value: "KASINO " },
+    { key: Emojo.CONST, value: "KASINAO" },
+    { key: Emojo.VAR, value: "KASINAE" },
+    { key: Emojo.LET, value: "KASINO" },
   ]
 }
 
@@ -53,7 +53,19 @@ export function parseCode(code: string, target: SupportedTargets) {
   return  code.split("\n").map(x => x.trim()).filter(x => x.length > 0).map(x => {
     return [...x].map(x => {
       const tokenFound = parseTables[target].find(y => y.key === x);
-      return tokenFound?.value || x
+      return tokenWithSpaces(target, tokenFound?.value) || x;
     }).join("");
   }).join("\n");
+}
+
+function tokenWithSpaces(target: SupportedTargets, token?: string) {
+  if (!token) {
+    return token;
+  }
+  
+  if (target === SupportedTargets.JS) {
+    return token;
+  }
+
+  return ` ${token} `;
 }
