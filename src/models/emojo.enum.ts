@@ -27,4 +27,5 @@ export enum Emojo {
   DEFAULT = "😶",
   FOR = "🔄",
   CONTINUE = "🫡",
+  COMMENT = "💭"
 };

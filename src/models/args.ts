@@ -1,4 +1,4 @@
-export enum SupportedTargets {
+export enum Target {
   JS = "js",
   KL = "kl",
 }
@@ -6,5 +6,5 @@ export enum SupportedTargets {
 export interface Args {
   inputPath: string,
   outputPath: string,
-  target: SupportedTargets
+  target: Target
 }

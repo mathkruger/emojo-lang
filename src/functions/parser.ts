@@ -1,8 +1,8 @@
-import { SupportedTargets } from "../models/args";
+import { Target } from "../models/args";
 import { Emojo } from "../models/emojo.enum";
 import { KeyValue } from "../models/key-value.type";
 
-const parseTables: Record<SupportedTargets, KeyValue[]> = {
+const parseTables: Record<Target, KeyValue[]> = {
   "js": <KeyValue[]>[
     { key: Emojo.LOG, value: "console.log" },
     { key: Emojo.IF, value: "if" },
@@ -32,6 +32,7 @@ const parseTables: Record<SupportedTargets, KeyValue[]> = {
     { key: Emojo.DEFAULT, value: "default" },
     { key: Emojo.FOR, value: "for" },
     { key: Emojo.CONTINUE, value: "continue" },
+    { key: Emojo.COMMENT, value: "\/\/" },
   ],
   "kl": <KeyValue[]>[
     { key: Emojo.LOG, value: "VAIDJ" },
@@ -62,10 +63,11 @@ const parseTables: Record<SupportedTargets, KeyValue[]> = {
     { key: Emojo.DEFAULT, value: "BABY" },
     { key: Emojo.FOR, value: "AS BALADAS" },
     { key: Emojo.CONTINUE, value: "VAI" },
+    { key: Emojo.COMMENT, value: "\/COMENTAE" },
   ]
 }
 
-export function parseCode(code: string, target: SupportedTargets) {
+export function parseCode(code: string, target: Target) {
   return  code.split("\n").map(x => x.trim()).filter(x => x.length > 0).map(x => {
     return [...x].map(x => {
       const tokenFound = parseTables[target].find(y => y.key === x);

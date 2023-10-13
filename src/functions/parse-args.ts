@@ -1,4 +1,4 @@
-import { Args, SupportedTargets } from "../models/args";
+import { Args, Target } from "../models/args";
 
 export function parseArgs(argv: string[]) {
   if (argv.length < 3) {
@@ -7,7 +7,7 @@ export function parseArgs(argv: string[]) {
 
   const inputPath: string = argv[2];
   const outputPath: string = argv[3] || "./output.js";
-  const target: SupportedTargets = argv[4] as SupportedTargets || SupportedTargets.JS;
+  const target: Target = argv[4] as Target || Target.JS;
 
 
   return <Args> {
@@ -18,6 +18,6 @@ export function parseArgs(argv: string[]) {
 }
 
 function exitWithUsage() {
-  console.error("❌ Usage: bun start -- input.emo [ouput.\js]");
+  console.info("❌ Usage: bun start -- input.emo [ouput] [target]");
   process.exit(1);
 }
